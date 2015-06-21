@@ -17,3 +17,14 @@ body > .container {
 .footer .list-inline {
     margin-bottom: 0;
 }
+
+.photo {
+    background-color: #F2F2F2;
+    text-align: center;
+    color: #D0D0D0;
+    border-radius: 10px;
+}
+
+.photo > i {
+    line-height: 160px;
+}
