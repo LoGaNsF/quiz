@@ -15,7 +15,7 @@ var storage		= process.env.DATABASE_STORAGE;
 var Sequelize = require('sequelize');
 
 // Cargar modelo
-var sequelize = new Sequelize(null, null, null, {
+var sequelize = new Sequelize(DB_name, user, pwd, {
 	dialect: dialect,
 	protocol: protocol,
 	port: port,
@@ -32,13 +32,12 @@ exports.Quiz = Quiz;
 // Crea e inicializa la tabla de preguntas
 sequelize.sync().then(function() {
 	Quiz.count().then(function(count) {
-		if (!count) {
-			Quiz.create({question: 'Capital de Italia', answer: 'Roma'});
-			Quiz.create({question: 'Capital de Portugal', answer: 'Lisboa'});
-			Quiz.create({
-				question: 'Capital de España',
-				answer: 'Madrid'
-			})
+		if (count == 0) {
+			Quiz.bulkCreate([
+				{question: 'Capital de Italia', answer: 'Roma'},
+				{question: 'Capital de Portugal', answer: 'Lisboa'},
+				{question: 'Capital de España', answer: 'Madrid'}
+			])
 			.then(function() {
 				console.log("Base de datos inicializada.");
 			});
