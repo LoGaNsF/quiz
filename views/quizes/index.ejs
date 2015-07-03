@@ -32,7 +32,16 @@
 					<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].question %></a></td>
 					<td><%= quizes[i].theme %></td>
 					<td>
-						<a href="/quizes/<%= quizes[i].id %>/edit" class="btn btn-default btn-xs">Editar</a>
+					<ul class="list-inline">
+						<li>
+							<a href="/quizes/<%= quizes[i].id %>/edit" class="btn btn-default btn-xs">Editar</a>
+						</li>
+						<li>
+							<form action="/quizes/<%= quizes[i].id %>?_method=delete" method="POST">
+								<button type="submit" onclick="return confirm('Borrar: <%= quizes[i].question %>');" class="btn btn-default btn-xs">Eliminar</button>
+							</form>
+						</li>
+					</ul>
 					</td>
 				</tr>
 			<% } %>
