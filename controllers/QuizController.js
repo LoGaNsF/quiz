@@ -14,7 +14,7 @@ exports.load = function(req, res, next, quizId) {
 	});
 };
 
-// Get /quizes
+// GET /quizes
 exports.index = function(req, res) {
 	var options = {};
 	if(req.query.search){
@@ -30,12 +30,12 @@ exports.index = function(req, res) {
 	});
 };
 
-// Get /quizes/:id
+// GET /quizes/:id
 exports.show = function(req, res) {
 	res.render('quizes/show', {quiz: req.quiz});
 };
 
-// Get /quizes/:id/answer
+// GET /quizes/:id/answer
 exports.answer = function(req, res) {
 	var result = 'Incorrecto';
 	if (req.query.answer === req.quiz.answer) {
@@ -43,4 +43,24 @@ exports.answer = function(req, res) {
 	}
 
 	res.render('quizes/answer', {quiz: req.quiz, answer: result});
+};
+
+// GET /quizes/new
+exports.new = function(req, res) {
+	var quiz = models.Quiz.build({
+		question: 'Pregunta',
+		answer: 'Respuesta',
+		theme: 'otro'
+	});
+
+	res.render('quizes/new', {quiz: quiz});
+};
+
+// POST /quizes/create
+exports.create = function(req, res) {
+	var quiz = models.Quiz.build(req.body.quiz);
+
+	quiz.save({fields: ["question", "answer", "theme"]}).then(function() {
+		res.redirect('/quizes');
+	});
 };

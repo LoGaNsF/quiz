@@ -28,3 +28,7 @@ body > .container {
 .photo > i {
     line-height: 160px;
 }
+
+.mb {
+    margin-bottom: 30px;
+}

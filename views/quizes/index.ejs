@@ -1,5 +1,8 @@
-<div class="row">
-	<div class="col-lg-4 col-sm-12 col-lg-offset-8">
+<div class="row mb">
+	<div class="col-lg-2 col-sm-12">
+		<a href="/quizes/new" class="btn btn-primary">Crear pregunta</a>
+	</div>
+	<div class="col-lg-4 col-sm-12 col-lg-offset-6">
 		<form action="/quizes" method="GET">
 			<div class="input-group">
 				<input type="text" name="search" class="form-control" placeholder="Buscar...">
@@ -19,12 +22,14 @@
 			<thead>
 				<tr>
 					<th>Pregunta</th>
+					<th>Tema</th>
 				</tr>
 			</thead>
 			<tbody>
 			<% for (i = 0; i < quizes.length; i++) { %>
 				<tr>
 					<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].question %></a></td>
+					<td><%= quizes[i].theme %></td>
 				</tr>
 			<% } %>
 			</tbody>
