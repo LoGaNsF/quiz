@@ -23,6 +23,7 @@
 				<tr>
 					<th>Pregunta</th>
 					<th>Tema</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,9 @@
 				<tr>
 					<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].question %></a></td>
 					<td><%= quizes[i].theme %></td>
+					<td>
+						<a href="/quizes/<%= quizes[i].id %>/edit" class="btn btn-default btn-xs">Editar</a>
+					</td>
 				</tr>
 			<% } %>
 			</tbody>
