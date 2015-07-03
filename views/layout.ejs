@@ -49,6 +49,15 @@
         </nav>
         <!-- Main -->
         <section class="container">
+            <!-- Errores -->
+            <% if (errors.length) { %>
+                <div class="alert alert-danger" role="alert">
+                    <% for (var i in errors) { %>
+                        <p><i class="glyphicon glyphicon-alert"></i> <%= errors[i].message %></p>
+                    <% } %>
+                </div>
+            <% } %>
+
             <%- body %>
         </section>
         <!-- Footer -->
