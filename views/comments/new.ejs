@@ -1,0 +1,16 @@
+<div class="page-header">
+    <h2>Añadir comentario</h2>
+</div>
+
+<div class="row">
+	<div class="col-lg-6 col-sm-12">
+		<form action="/quizes/<%= quizId %>/comments" method="POST" class="form-horizontal">
+			<div class="form-group">
+				<input type="text" class="form-control" name="comment[text]" id="comment" placeholder="Comentario...">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			</div>
+		</form>
+	</div>
+</div>
