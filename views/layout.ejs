@@ -44,6 +44,15 @@
                         <li><a href="/quizes">Preguntas</a></li>
                         <li><a href="/author">Autor</a></li>
                     </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (!session.user) { %>
+                            <li><a href="/login"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
+                        <% } else { %>
+                            <li class="static text-muted"><strong>Bienvenido</strong>, <%= session.user.username %></li>
+                            <li><a href="/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                        <% } %>
+                    </ul>
                 </div>
             </div>
         </nav>

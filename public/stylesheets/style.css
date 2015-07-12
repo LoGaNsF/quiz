@@ -32,3 +32,10 @@ body > .container {
 .mb {
     margin-bottom: 30px;
 }
+
+.static {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    border-right: 1px solid #EDEDED;
+}
