@@ -1,6 +1,8 @@
 <div class="row mb">
 	<div class="col-lg-2 col-sm-12">
-		<a href="/quizes/new" class="btn btn-primary">Crear pregunta</a>
+		<% if (session.user) { %>
+			<a href="/quizes/new" class="btn btn-primary">Crear pregunta</a>
+		<% } %>
 	</div>
 	<div class="col-lg-4 col-sm-12 col-lg-offset-6">
 		<form action="/quizes" method="GET">
@@ -32,16 +34,18 @@
 					<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].question %></a></td>
 					<td><%= quizes[i].theme %></td>
 					<td>
-					<ul class="list-inline">
-						<li>
-							<a href="/quizes/<%= quizes[i].id %>/edit" class="btn btn-default btn-xs">Editar</a>
-						</li>
-						<li>
-							<form action="/quizes/<%= quizes[i].id %>?_method=delete" method="POST">
-								<button type="submit" onclick="return confirm('Borrar: <%= quizes[i].question %>');" class="btn btn-default btn-xs">Eliminar</button>
-							</form>
-						</li>
-					</ul>
+						<% if (session.user) { %>
+							<ul class="list-inline">
+								<li>
+									<a href="/quizes/<%= quizes[i].id %>/edit" class="btn btn-default btn-xs">Editar</a>
+								</li>
+								<li>
+									<form action="/quizes/<%= quizes[i].id %>?_method=delete" method="POST">
+										<button type="submit" onclick="return confirm('Borrar: <%= quizes[i].question %>');" class="btn btn-default btn-xs">Eliminar</button>
+									</form>
+								</li>
+							</ul>
+						<% } %>
 					</td>
 				</tr>
 			<% } %>
