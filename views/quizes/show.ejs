@@ -24,13 +24,21 @@
 			<thead>
 				<tr>
 					<th>Comentario</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 			<% for (i in quiz.Comments) { %>
-				<tr>
-					<td><%= quiz.Comments[i].text %></td>
-				</tr>
+				<% if (quiz.Comments[i].publish || session.user) { %>
+					<tr>
+						<td><%= quiz.Comments[i].text %></td>
+						<% if (session.user && !quiz.Comments[i].publish) { %>
+							<td>
+								<a href="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[i].id %>/publish" class="btn btn-default btn-xs">Publicar</a>
+							</td>
+						<% } %>
+					</tr>
+				<% } %>
 			<% } %>
 			</tbody>
 		</table>

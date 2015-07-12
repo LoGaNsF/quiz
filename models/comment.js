@@ -5,6 +5,10 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				notEmpty: {msg: "Debe indicar un comentario."}
 			}
+		},
+		publish: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
 		}
 	});
 };
